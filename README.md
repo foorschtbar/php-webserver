@@ -46,8 +46,7 @@ services:
       - reverse-proxy
     depends_on:
       - db
-		
-		
+      
   db:
     image: mariadb
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
