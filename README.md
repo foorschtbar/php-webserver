@@ -1,14 +1,14 @@
 # A simple PHP Webserver for Docker #
 
 [
-  ![](https://img.shields.io/docker/v/foorschtbar/php-webserver)
-  ![](https://img.shields.io/docker/pulls/foorschtbar/php-webserver)
-  ![](https://img.shields.io/docker/stars/foorschtbar/php-webserver)
-  ![](https://img.shields.io/docker/image-size/foorschtbar/php-webserver)
-  ![](https://img.shields.io/docker/cloud/build/foorschtbar/php-webserver)
+  ![](https://img.shields.io/docker/v/foorschtbar/php-webserver?style=plastic)
+  ![](https://img.shields.io/docker/pulls/foorschtbar/php-webserver?style=plastic)
+  ![](https://img.shields.io/docker/stars/foorschtbar/php-webserver?style=plastic)
+  ![](https://img.shields.io/docker/image-size/foorschtbar/php-webserver?style=plastic)
+  ![](https://img.shields.io/docker/cloud/build/foorschtbar/php-webserver?style=plastic)
 ](https://hub.docker.com/repository/docker/foorschtbar/php-webserver)
 
-This container is simple PHP Webserver for Docker.
+This container is simple PHP Webserver for Docker. Please note: I use this image for my own web servers. Everything can change at any time and without notice.
 
 * GitHub: [foorschtbar/php-webserver](https://github.com/foorschtbar/php-webserver)
 * Docker Hub: [foorschtbar/php-webserver](https://hub.docker.com/r/foorschtbar/php-webserver)
