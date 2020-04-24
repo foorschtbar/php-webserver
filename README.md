@@ -44,7 +44,8 @@ services:
     networks:
       - internal
       - reverse-proxy
-	depends_on:
+    depends_on:
+      - db
 		
 		
   db:
@@ -61,7 +62,7 @@ services:
       - MYSQL_USER=<changeme>
     networks:
       - internal
-	  - mysqlbackup
+      - mysqlbackup
     ports:
       - 127.0.0.1:<changeme>:3306
     labels: 
