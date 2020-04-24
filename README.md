@@ -22,7 +22,7 @@ version: "3"
 
 services:
   web:
-    build: foorschtbar/php-webserver
+    image: foorschtbar/php-webserver
     container_name: <changeme>-web
     hostname: <changeme>
     restart: unless-stopped

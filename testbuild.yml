@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  test:
+    build: ./
+    environment:
+      - "UID=1000"
+      - "GID=1000"
