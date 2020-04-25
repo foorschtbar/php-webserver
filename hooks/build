@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Run hooks\build"
 echo Build with DockerTag $DOCKER_TAG
 
 docker build -f $DOCKERFILE_PATH -t $IMAGE_NAME .
