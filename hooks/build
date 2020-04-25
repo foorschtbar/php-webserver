@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# exit when any command fails
+set -e
+trap "exit \$?" INT TERM EXIT
+
+# build base image
+docker build -f Dockerfile-base -t base .
+
+# build tagged images
+source hooks/tags
+
+if [ "${SOURCE_BRANCH}" = "beta" ]; then
+    echo "Beta-Branch. Images will be tagged with -beta suffix."
+    suffix="-beta"
+else
+    suffix=""
+fi
+
+for tag in "${TAGS[@]}"; do
+    echo "Building  Dockerfile-${tag} with Tag ${DOCKER_REPO}:${tag}${suffix}..."
+    docker build -f Dockerfile-${tag} \
+        -t ${DOCKER_REPO}:${tag}${suffix} .
+done
+

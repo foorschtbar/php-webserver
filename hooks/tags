@@ -1,0 +1,3 @@
+#!/bin/bash
+
+export TAGS=(latest python)
