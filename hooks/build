@@ -7,6 +7,7 @@ trap "exit \$?" INT TERM EXIT
 # build base image
 docker build -f Dockerfile-base -t base .
 
+# build tagged images
 source hooks/tags
 
 if [ "${SOURCE_BRANCH}" = "beta" ]; then
@@ -17,7 +18,8 @@ else
 fi
 
 for tag in "${TAGS[@]}"; do
-    docker build -f Dockerfile-${tag} \
+    echo "Building  ./Dockerfile-${tag} with Tag ${DOCKER_REPO}:${tag}${suffix}..."
+    docker build -f ./Dockerfile-${tag} \
         -t ${DOCKER_REPO}:${tag}${suffix}
 done
 

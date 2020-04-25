@@ -14,5 +14,6 @@ else
 fi
 
 for tag in "${TAGS[@]}"; do
+    echo "Pushing ${DOCKER_REPO}:${tag}${suffix}..."
     docker push ${DOCKER_REPO}:${tag}${suffix}
 done
