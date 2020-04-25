@@ -11,7 +11,7 @@ docker build -f Dockerfile-base -t base .
 source hooks/tags
 
 if [ "${SOURCE_BRANCH}" = "beta" ]; then
-    echo "Beta-Branche. Images will be tagged with -beta."
+    echo "Beta-Branch. Images will be tagged with -beta suffix."
     suffix="-beta"
 else
     suffix=""

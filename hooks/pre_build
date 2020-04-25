@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source hooks/tags
+
+if [ "${SOURCE_BRANCH}" = "beta" ]; then
+    echo "Beta-Branch. Pull Images with -beta suffix."
+    suffix="-beta"
+else
+    suffix=""
+fi
+
+for tag in "${TAGS[@]}"; do
+    docker pull ${DOCKER_REPO}:${tag}${suffix}
+done
