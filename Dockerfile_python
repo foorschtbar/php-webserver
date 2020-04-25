@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y \
     mariadb-client \
     # for imap
     libc-client-dev libkrb5-dev \
+    # python
+    python2 python-pip python-dev build-essential \
     # cleanup
     && rm -r /var/lib/apt/lists/*
 
@@ -17,6 +19,9 @@ RUN NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
     docker-php-ext-install -j${NPROC} \
     mysqli \
     imap
+
+# install python modules
+RUN pip2 install js2py pytz tzlocal cfscrape
 
 # modrewirte
 RUN a2enmod rewrite

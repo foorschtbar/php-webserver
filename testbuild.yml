@@ -2,7 +2,9 @@ version: "3"
 
 services:
   test:
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile_python
     environment:
       - "UID=1000"
       - "GID=1000"
