@@ -18,8 +18,8 @@ else
 fi
 
 for tag in "${TAGS[@]}"; do
-    echo "Building  ./Dockerfile-${tag} with Tag ${DOCKER_REPO}:${tag}${suffix}..."
-    docker build -f ./Dockerfile-${tag} \
-        -t ${DOCKER_REPO}:${tag}${suffix}
+    echo "Building  Dockerfile-${tag} with Tag ${DOCKER_REPO}:${tag}${suffix}..."
+    docker build -f Dockerfile-${tag} \
+        -t ${DOCKER_REPO}:${tag}${suffix} .
 done
 
