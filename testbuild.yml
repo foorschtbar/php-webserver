@@ -4,7 +4,7 @@ services:
   test:
     build:
       context: ./
-      dockerfile: Dockerfile_python
+      dockerfile: Dockerfile.base
     environment:
       - "UID=1000"
       - "GID=1000"
