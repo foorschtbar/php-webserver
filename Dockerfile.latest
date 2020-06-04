@@ -6,8 +6,10 @@ RUN apt-get update && apt-get install -y \
     mariadb-client \
     # for imap
     libc-client-dev libkrb5-dev \
+    # for soap
+    libxml2-dev \
     # cleanup
-    && rm -r /var/lib/apt/lists/*
+    && apt-get clean -y && rm -r /var/lib/apt/lists/*
 
 # configure php extensions
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
@@ -17,4 +19,5 @@ RUN NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
     docker-php-ext-install -j${NPROC} \
     mysqli \
     pdo_mysql \
-    imap
+    imap \
+    soap
