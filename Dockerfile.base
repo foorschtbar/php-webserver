@@ -1,7 +1,7 @@
-FROM php:7.3-apache
+FROM php:7.3.18-apache
 
 # modrewirte
-RUN a2enmod rewrite
+RUN a2enmod rewrite && a2enmod remoteip && a2enmod headers
 
 # copy default index.php for testing. getting overwritten from a volume later...
 COPY ./assets/index.php /var/www/html/index.php

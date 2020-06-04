@@ -4,7 +4,11 @@ services:
   test:
     build:
       context: ./
+<<<<<<< HEAD
       dockerfile: Dockerfile-latest
+=======
+      dockerfile: Dockerfile.base
+>>>>>>> beta
     environment:
       - "UID=1000"
       - "GID=1000"
