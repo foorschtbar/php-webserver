@@ -1,7 +1,8 @@
 FROM base
 
 # install some packages
-RUN apt-get update && apt-get install -y \
+RUN set -eux; \
+    apt-get update && apt-get install -y \
     # mariadb
     mariadb-client \
     # for imap

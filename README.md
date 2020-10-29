@@ -31,7 +31,7 @@ services:
     hostname: <changeme>
     restart: unless-stopped
     volumes:
-      - ./data/web:/var/www/html
+      - ./data/web:/var/www/html/public
     environment:
       - "UID=1000"
       - "GID=1000"

@@ -1,16 +1,24 @@
 FROM php:7.4-apache
 
-# modrewirte
-RUN a2enmod rewrite && a2enmod remoteip && a2enmod headers
+# confige php
+RUN set -eux; \
+    mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+COPY ./assets/php.ini $PHP_INI_DIR/conf.d/000-default.ini
 
-# copy default index.php for testing. getting overwritten from a volume later...
-COPY ./assets/index.php /var/www/html/index.php
-
-# configure apache
-COPY ./assets/000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY ./assets/ErrorDocument.php /var/www/html_errordocument/ErrorDocument.php
+# confige apache
+RUN set -eux; \
+    a2enmod rewrite; \
+    a2enmod headers; \
+    a2enmod remoteip; \
+    rm -r /var/www/html; \
+    mkdir -p /var/www/html/public /var/www/html_error; \
+    chown -R www-data:www-data /var/www
+COPY ./assets/index.php /var/www/html/public/index.php
+COPY ./assets/errordoc.php /var/www/html_error/errordoc.php
+COPY ./assets/apache.conf $APACHE_CONFDIR/sites-available/000-default.conf
 
 # overwrite docker entrypoint
-COPY ./docker-cmd.sh /docker-cmd.sh
-RUN chmod +x /docker-cmd.sh
-CMD /docker-cmd.sh
+COPY ./assets/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
+CMD ["apache2-foreground"]
