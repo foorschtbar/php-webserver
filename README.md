@@ -12,12 +12,35 @@
 ](https://github.com/foorschtbar/php-webserver)
 
 
-This container is simple PHP Webserver for Docker. Please note: I use this image for my own web servers. Everything can change at any time and without notice.
+This is an usefull extension of the official php:*-apache Docker image.
 
 * GitHub: [foorschtbar/php-webserver](https://github.com/foorschtbar/php-webserver)
 * Docker Hub: [foorschtbar/php-webserver](https://hub.docker.com/r/foorschtbar/php-webserver)
 
-## Usage ##
+## Improvements
+
+... compared to the official image:
+
+* PHP extensions: `mysqli`, `mysql_pdo`, `imap` and `soap`
+* Apache Modules: `mod_rewrite`, `mod_headers`, `mod_remoteip`
+* Prepared for use behind a reverse proxy
+* `Composer`
+* `Python 2` (with extra Docker tag `python`)
+
+## Tags and Versions
+
+Tag | PHP Version | Python
+--- | --- | ---
+`latest` | 7.4 | no
+`python` | 7.4 | yes
+`7.3` | 7.3 | no
+`7.3-python` | 7.3 | yes
+`7.4` | 7.4 | no
+`7.4-python` | 7.4 | yes
+`8.0` | 8.0 | no
+`8.0-python` | 8.0 | yes
+
+## Usage
 
 Example docker-compose configuration:
 
