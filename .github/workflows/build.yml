@@ -73,22 +73,22 @@ jobs:
           if [ ${BRANCH_NAME} == 'develop' ]
           then
             TAG_DEVELOP="-develop"
-          fi
+          else
+            # Tag with "latest"
+            if [ '${{ matrix.tag_with_latest }}' == 'true' ]
+            then
+              TAGS+=(${{ env.DOCKERHUB_TAG }}:latest)
+            fi
 
-          # Add tag python if needed
-          if [ '${{ matrix.python }}' == 'true' ]
-          then
-            TAG_PYTHON="-python"
+            # Add tag python if needed
+            if [ '${{ matrix.python }}' == 'true' ]
+            then
+              TAG_PYTHON="-python"
+            fi
           fi
 
           # Build "long" tag
           TAGS+=(${{ env.DOCKERHUB_TAG }}:${{ matrix.php }}$TAG_PYTHON$TAG_DEVELOP)
-
-          # Tag with "latest"
-          if [ '${{ matrix.tag_with_latest }}' == 'true' ]
-          then
-            TAGS+=(${{ env.DOCKERHUB_TAG }}:latest)
-          fi
 
           # Tag with "python"
           if [ '${{ matrix.tag_with_python }}' == 'true' ]
