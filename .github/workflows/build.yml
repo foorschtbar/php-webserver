@@ -1,0 +1,137 @@
+name: Build Docker Images
+
+env:
+  DOCKERHUB_TAG: "foorschtbar/php-webserver"
+  DOCKERHUB_SHORT_DESCRIPTION: "This is an usefull extension of the official php:*-apache Docker image."
+  DOCKERHUB_README_FILE: "README.md"
+
+on:
+  push:
+  schedule:
+    - cron: "0 5 * * 5"
+
+defaults:
+  run:
+    shell: "bash -Eeuo pipefail -x {0}"
+
+jobs:
+  main:
+    name: Build & Push Docker Images
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["7.3", "7.4", "8.0"]
+        python: [true, false]
+        include:
+          - php: "7.4"
+            python: false
+            tag_with_latest: true
+          - php: "7.4"
+            python: true
+            tag_with_python: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Set cache buster
+        id: cache_buster
+        run: |
+          if [ '${{ github.event_name }}' == 'schedule' ]
+          then
+            echo "Scheduled run. Disable cache."
+            echo "::set-output name=suffix::-no-cache"
+          else
+            echo "Non-scheduled run. Enable cache."
+            echo "::set-output name=suffix::"
+          fi
+
+      - name: Get branche name
+        uses: nelonoel/branch-name@v1.0.1
+
+      - name: Set Docker Tags
+        id: docker_tags
+        run: |
+          TAGS=()
+          TAG_DEVELOP=""
+          TAG_PYTHON=""
+
+          # Add tag develop if needed
+          if [ ${BRANCH_NAME} == 'develop' ]
+          then
+            TAG_DEVELOP="-develop"
+          fi
+
+          # Add tag python if needed
+          if [ '${{ matrix.python }}' == 'true' ]
+          then
+            TAG_PYTHON="-python"
+          fi
+
+          # Build "long" tag
+          TAGS+=(${{ env.DOCKERHUB_TAG }}:${{ matrix.php }}$TAG_PYTHON$TAG_DEVELOP)
+
+          # Tag with "latest"
+          if [ '${{ matrix.tag_with_latest }}' == 'true' ]
+          then
+            TAGS+=(${{ env.DOCKERHUB_TAG }}:latest)
+          fi
+
+          # Tag with "python"
+          if [ '${{ matrix.tag_with_python }}' == 'true' ]
+          then
+            TAGS+=(${{ env.DOCKERHUB_TAG }}:python)
+          fi
+
+          TAG_LIST=$(IFS=,; printf '%s' "${TAGS[*]}")
+          echo "Image tags:"
+          printf -- '- %s\n' "${TAGS[@]}"
+          echo "::set-output name=tags::$TAG_LIST"
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          build-args: FROM_TAG=${{ matrix.php }}-apache
+          push: true
+          tags: ${{ steps.docker_tags.outputs.tags }}
+          platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64
+          cache-from: type=registry,ref=${{ env.DOCKERHUB_TAG }}:${{ matrix.php }}${{ steps.cache_buster.outputs.suffix }}
+          cache-to: type=inline
+
+      - name: Image digests
+        run: |
+          echo PHP version: ${{ matrix.php }}; \
+          echo Python: ${{ matrix.python }}; \
+          echo Branche: ${BRANCH_NAME}; \
+          echo Digests: ${{ steps.docker_build.outputs.digest }}
+
+  pushreadme:
+    runs-on: ubuntu-latest
+    name: Push README to Docker Hub
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+      - name: push README to Dockerhub
+        uses: christian-korneck/update-container-description-action@v1
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        with:
+          destination_container_repo: ${{ env.DOCKERHUB_TAG }}
+          provider: dockerhub
+          short_description: ${{ env.DOCKERHUB_SHORT_DESCRIPTION }}
+          readme_file: ${{ env.DOCKERHUB_README_FILE }}
