@@ -1,5 +1,9 @@
 FROM php:7.4-apache
 
+# update image
+RUN set -eux; \
+    apt-get update && apt-get upgrade 
+
 # confige php
 RUN set -eux; \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
