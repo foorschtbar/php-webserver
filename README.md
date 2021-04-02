@@ -1,14 +1,16 @@
-# A simple PHP Webserver for Docker #
+# php-webserver - A PHP Webserver #
 
 [
   ![](https://img.shields.io/docker/v/foorschtbar/php-webserver?style=plastic)
   ![](https://img.shields.io/docker/pulls/foorschtbar/php-webserver?style=plastic)
   ![](https://img.shields.io/docker/stars/foorschtbar/php-webserver?style=plastic)
   ![](https://img.shields.io/docker/image-size/foorschtbar/php-webserver?style=plastic)
-  ![](https://img.shields.io/docker/cloud/build/foorschtbar/php-webserver?style=plastic)
 ](https://hub.docker.com/repository/docker/foorschtbar/php-webserver)
 [
+  ![](https://img.shields.io/github/workflow/status/foorschtbar/php-webserver/Build%20Docker%20Images?style=plastic)
+  ![](https://img.shields.io/github/languages/top/foorschtbar/php-webserver?style=plastic)
   ![](https://img.shields.io/github/last-commit/foorschtbar/php-webserver?style=plastic)
+  ![](https://img.shields.io/github/license/foorschtbar/php-webserver?style=plastic)
 ](https://github.com/foorschtbar/php-webserver)
 
 
