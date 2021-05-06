@@ -27,6 +27,7 @@ jobs:
           - php: "7.4"
             python: false
             tag_with_latest: true
+            tag_with_develop: true
           - php: "7.4"
             python: true
             tag_with_python: true
@@ -88,6 +89,12 @@ jobs:
           if [ '${{ matrix.tag_with_latest }}' == 'true' ]
           then
             TAGS+=(${{ env.DOCKERHUB_TAG }}:latest)
+          fi
+
+          # Tag with "develop"
+          if [ '${{ matrix.tag_with_develop}}' == 'true' ]
+          then
+            TAGS+=(${{ env.DOCKERHUB_TAG }}:develop)
           fi
 
           # Tag with "python"
