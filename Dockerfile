@@ -28,32 +28,18 @@ RUN set -eux; \
     # cleanup
     && apt-get clean -y && rm -r /var/lib/apt/lists/*
 
-# configure php extensions
-RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
+# copy php extensions installer
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 # install php extensions
-RUN NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
-    docker-php-ext-install -j${NPROC} \
+RUN install-php-extensions \
+    @composer \
     mysqli \
     pdo_mysql \
     imap \
-    soap
-
-# install composer
-RUN set -eux; \
-    EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"; \
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"; \
-    ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"; \
-    if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]; then \
-    >&2 echo 'ERROR: Invalid installer checksum'; \
-    rm composer-setup.php; \
-    exit 1; \
-    fi; \
-    php composer-setup.php --quiet; \
-    RESULT=$?; \
-    mv composer.phar /usr/local/bin/composer; \
-    rm composer-setup.php; \
-    exit $RESULT
+    soap \
+    opcache \
+    imagick
 
 # confige apache
 RUN set -eux; \
