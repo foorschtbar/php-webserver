@@ -23,7 +23,7 @@ This is an usefull extension of the official php:*-apache Docker image.
 
 ... compared to the official image:
 
-* PHP extensions: `mysqli`, `mysql_pdo`, `imap` and `soap`
+* PHP extensions: `mysqli`, `mysql_pdo`, `imap`, `soap`,`imagick` and `op_cache`
 * Apache Modules: `mod_rewrite`, `mod_headers`, `mod_remoteip`
 * Prepared for use behind a reverse proxy
 * `Composer`
