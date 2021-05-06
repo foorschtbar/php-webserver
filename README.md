@@ -31,16 +31,23 @@ This is an usefull extension of the official php:*-apache Docker image.
 
 ## Tags and Versions
 
-Tag | PHP Version | Python
---- | --- | ---
-`latest` | 7.4 | no
-`python` | 7.4 | yes
-`7.3` | 7.3 | no
-`7.3-python` | 7.3 | yes
-`7.4` | 7.4 | no
-`7.4-python` | 7.4 | yes
-`8.0` | 8.0 | no
-`8.0-python` | 8.0 | yes
+Tag | PHP Version | Branch | Python 
+--- | --- | --- | ---
+`latest` | 7.4 | master | no
+`python` | 7.4 | master | yes
+`develop` | 7.4 | develop | yes
+`7.3` | 7.3 | master | no
+`7.3-develop` | 7.3 | develop | no
+`7.3-python` | 7.3 | master | yes
+`7.3-python-develop` | 7.3 | develop | yes
+`7.4` | 7.4 | master | no
+`7.4-develop` | 7.4 | develop | no
+`7.4-python` | 7.4 | master | yes
+`7.4-python-develop` | 7.4 | develop | yes
+`8.0` | 8.0 | master | no
+`8.0-develop` | 8.0 | develop | no
+`8.0-python` | 8.0 | master | yes
+`8.0-python-develop` | 8.0 | develop | yes
 
 ## Usage
 
