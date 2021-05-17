@@ -54,9 +54,9 @@ COPY ./assets/errordoc.php /var/www/html_error/errordoc.php
 COPY ./assets/apache.conf $APACHE_CONFDIR/sites-available/000-default.conf
 
 
-ARG PYTHON=False
+ARG PYTHON=no-python
 # install python
-RUN if [ "$PYTHON" = "True" ]; then \
+RUN if [ "$PYTHON" = "python" ]; then \
     set -eux; \
     echo "Build image with python"; \
     apt-get update && apt-get install -y \
@@ -67,7 +67,7 @@ RUN if [ "$PYTHON" = "True" ]; then \
     fi
 
 # install python modules
-RUN if [ "$PYTHON" = "True" ]; then \
+RUN if [ "$PYTHON" = "python" ]; then \
     set -eux; \
     pip2 install js2py pytz tzlocal cfscrape; \
     fi

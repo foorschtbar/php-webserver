@@ -22,14 +22,14 @@ jobs:
       fail-fast: false
       matrix:
         php: ["7.3", "7.4", "8.0"]
-        python: [true, false]
+        python: ["python", "no-python"]
         include:
           - php: "7.4"
-            python: false
+            python: "no-python"
             tag_with_latest: true
             tag_with_develop: true
           - php: "7.4"
-            python: true
+            python: "python"
             tag_with_python: true
 
     steps:
@@ -89,7 +89,7 @@ jobs:
           fi
 
           # Add tag python if needed
-            if [ '${{ matrix.python }}' == 'true' ]
+            if [ '${{ matrix.python }}' == 'python' ]
             then
               TAG_PYTHON="-python"
             fi
@@ -112,7 +112,9 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          build-args: FROM_TAG=${{ matrix.php }}-apache
+          build-args: |
+            FROM_TAG=${{ matrix.php }}-apache
+            PYTHON=${{ matrix.python }}
           push: true
           tags: ${{ steps.docker_tags.outputs.tags }}
           platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64
