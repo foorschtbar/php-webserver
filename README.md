@@ -35,7 +35,7 @@ Tag | PHP Version | Branch | Python
 --- | --- | --- | ---
 `latest` | 7.4 | master | no
 `python` | 7.4 | master | yes
-`develop` | 7.4 | develop | yes
+`develop` | 7.4 | develop | no
 `7.3` | 7.3 | master | no
 `7.3-develop` | 7.3 | develop | no
 `7.3-python` | 7.3 | master | yes
