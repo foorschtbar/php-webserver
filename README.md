@@ -97,7 +97,6 @@ services:
       - MYSQL_USER=<changeme>
     networks:
       - internal
-      - mysqlbackup
     ports:
       - 127.0.0.1:<changeme>:3306
     labels: 
@@ -106,8 +105,6 @@ services:
 networks:
   internal:
     external: false
-  mysqlbackup:
-    external: true
   reverse-proxy:
     external: true
 ```
