@@ -27,7 +27,7 @@ This is an usefull extension of the official php:*-apache Docker image.
 * Apache Modules: `mod_rewrite`, `mod_headers`, `mod_remoteip`
 * Prepared for use behind a reverse proxy
 * `Composer`
-* `Python 2` (with extra Docker tag `python`)
+* `Python 3` (with extra Docker tag `python`)
 
 ## Tags and Versions
 

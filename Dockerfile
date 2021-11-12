@@ -61,7 +61,7 @@ RUN if [ "$PYTHON" = "python" ]; then \
     echo "Build image with python"; \
     apt-get update && apt-get install -y \
     # python
-    python2 python-pip python-dev build-essential \
+    python3 python3-pip python3-dev build-essential \
     # cleanup
     && rm -r /var/lib/apt/lists/*; \
     fi
@@ -69,7 +69,7 @@ RUN if [ "$PYTHON" = "python" ]; then \
 # install python modules
 RUN if [ "$PYTHON" = "python" ]; then \
     set -eux; \
-    pip2 install js2py pytz tzlocal cfscrape; \
+    pip3 install js2py pytz tzlocal cfscrape; \
     fi
 
 # overwrite docker entrypoint
