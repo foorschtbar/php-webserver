@@ -21,14 +21,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ["7.3", "7.4", "8.0"]
+        php: ["7.4", "8.0", "8.1"]
         python: ["python", "no-python"]
         include:
-          - php: "7.4"
+          - php: "8.1"
             python: "no-python"
             tag_with_latest: true
             tag_with_develop: true
-          - php: "7.4"
+          - php: "8.1"
             python: "python"
             tag_with_python: true
 
@@ -134,6 +134,7 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v3
+        
       - name: push README to Dockerhub
         uses: christian-korneck/update-container-description-action@v1
         env:
