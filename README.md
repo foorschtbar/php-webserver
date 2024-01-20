@@ -7,7 +7,7 @@
 ![](https://img.shields.io/docker/image-size/foorschtbar/php-webserver?style=plastic)
 ](https://hub.docker.com/repository/docker/foorschtbar/php-webserver)
 [
-![](https://img.shields.io/github/workflow/status/foorschtbar/php-webserver/Build%20Docker%20Images?style=plastic)
+![](https://img.shields.io/github/actions/workflow/status/foorschtbar/php-webserver/build.yml?style=plastic)
 ![](https://img.shields.io/github/languages/top/foorschtbar/php-webserver?style=plastic)
 ![](https://img.shields.io/github/last-commit/foorschtbar/php-webserver?style=plastic)
 ![](https://img.shields.io/github/license/foorschtbar/php-webserver?style=plastic)
@@ -32,21 +32,17 @@ This is an usefull extension of the official php:\*-apache Docker image.
 
 | Tag                  | PHP Version | Branch  | Python |
 | -------------------- | ----------- | ------- | ------ |
-| `latest`             | 8.1         | master  | no     |
-| `python`             | 8.1         | master  | yes    |
-| `develop`            | 8.1         | develop | no     |
+| `latest`             | 8.3         | master  | no     |
+| `python`             | 8.3         | master  | yes    |
+| `develop`            | 8.3         | develop | no     |
 | `7.4`                | 7.4         | master  | no     |
 | `7.4-develop`        | 7.4         | develop | no     |
 | `7.4-python`         | 7.4         | master  | yes    |
 | `7.4-python-develop` | 7.4         | develop | yes    |
-| `8.0`                | 8.0         | master  | no     |
-| `8.0-develop`        | 8.0         | develop | no     |
-| `8.0-python`         | 8.0         | master  | yes    |
-| `8.0-python-develop` | 8.0         | develop | yes    |
-| `8.1`                | 8.1         | master  | no     |
-| `8.1-develop`        | 8.1         | develop | no     |
-| `8.1-python`         | 8.1         | master  | yes    |
-| `8.1-python-develop` | 8.1         | develop | yes    |
+| `8.3`                | 8.3         | master  | no     |
+| `8.3-develop`        | 8.3         | develop | no     |
+| `8.3-python`         | 8.3         | master  | yes    |
+| `8.3-python-develop` | 8.3         | develop | yes    |
 
 ## Usage
 
