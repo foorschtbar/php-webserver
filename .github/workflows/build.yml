@@ -21,14 +21,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ["7.4", "8.0", "8.1"]
+        php: ["7.4", "8.3"]
         python: ["python", "no-python"]
         include:
-          - php: "8.1"
+          - php: "8.3"
             python: "no-python"
             tag_with_latest: true
             tag_with_develop: true
-          - php: "8.1"
+          - php: "8.3"
             python: "python"
             tag_with_python: true
 
