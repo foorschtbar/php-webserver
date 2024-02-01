@@ -1,7 +1,7 @@
 # php-webserver - A PHP Webserver
 
 [
-![](https://img.shields.io/docker/v/foorschtbar/php-webserver?style=plastic)
+![](https://img.shields.io/docker/v/foorschtbar/php-webserver/latest?style=plastic)
 ![](https://img.shields.io/docker/pulls/foorschtbar/php-webserver?style=plastic)
 ![](https://img.shields.io/docker/stars/foorschtbar/php-webserver?style=plastic)
 ![](https://img.shields.io/docker/image-size/foorschtbar/php-webserver?style=plastic)
