@@ -1,4 +1,4 @@
-ARG FROM_TAG
+ARG FROM_TAG=8.3-apache
 
 FROM php:$FROM_TAG
 
@@ -61,7 +61,7 @@ RUN if [ "$PYTHON" = "python" ]; then \
     echo "Build image with python"; \
     apt-get update && apt-get install -y \
     # python
-    python3 python3-pip python3-dev build-essential \
+    python3 python3-pip python3-dev python3-venv build-essential \
     # cleanup
     && rm -r /var/lib/apt/lists/*; \
     fi
@@ -69,7 +69,9 @@ RUN if [ "$PYTHON" = "python" ]; then \
 # install python modules
 RUN if [ "$PYTHON" = "python" ]; then \
     set -eux; \
-    pip3 install js2py pytz tzlocal cfscrape; \
+    python3 -m venv /opt/venv; \
+    . /opt/venv/bin/activate; \
+    python3 -m pip install js2py pytz tzlocal cfscrape; \
     fi
 
 # overwrite docker entrypoint

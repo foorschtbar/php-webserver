@@ -35,10 +35,6 @@ This is an usefull extension of the official php:\*-apache Docker image.
 | `latest`             | 8.3         | master  | no     |
 | `python`             | 8.3         | master  | yes    |
 | `develop`            | 8.3         | develop | no     |
-| `7.4`                | 7.4         | master  | no     |
-| `7.4-develop`        | 7.4         | develop | no     |
-| `7.4-python`         | 7.4         | master  | yes    |
-| `7.4-python-develop` | 7.4         | develop | yes    |
 | `8.3`                | 8.3         | master  | no     |
 | `8.3-develop`        | 8.3         | develop | no     |
 | `8.3-python`         | 8.3         | master  | yes    |
