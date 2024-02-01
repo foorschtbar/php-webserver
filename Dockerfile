@@ -28,18 +28,20 @@ RUN set -eux; \
     # cleanup
     && apt-get clean -y && rm -r /var/lib/apt/lists/*
 
-# copy php extensions installer
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+# add php extensions installer
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 # install php extensions
-RUN install-php-extensions \
+RUN chmod +x /usr/local/bin/install-php-extensions && \
+    install-php-extensions \
     @composer \
     mysqli \
     pdo_mysql \
     imap \
     soap \
     opcache \
-    imagick
+    Imagick/imagick@master
+# to fix imagick amd64 bug https://github.com/mlocati/docker-php-extension-installer/issues/739
 
 # confige apache
 RUN set -eux; \
