@@ -40,6 +40,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     imap \
     soap \
     opcache \
+    gd \
     Imagick/imagick@master
 # to fix imagick amd64 bug https://github.com/mlocati/docker-php-extension-installer/issues/739
 
