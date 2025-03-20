@@ -1,4 +1,4 @@
-ARG FROM_TAG=8.3-apache
+ARG FROM_TAG=8.4-apache
 
 FROM php:$FROM_TAG
 
@@ -41,6 +41,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     soap \
     opcache \
     gd \
+    yaml \
     Imagick/imagick@master
 # to fix imagick amd64 bug https://github.com/mlocati/docker-php-extension-installer/issues/739
 
