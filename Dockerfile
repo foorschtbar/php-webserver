@@ -22,7 +22,7 @@ RUN set -eux; \
     # mariadb
     mariadb-client \
     # for imap
-    libc-client-dev libkrb5-dev \
+    libkrb5-dev \
     # for soap
     libxml2-dev \
     # cleanup
