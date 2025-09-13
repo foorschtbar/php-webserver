@@ -54,10 +54,10 @@ jobs:
           if [ '${{ github.event_name }}' == 'schedule' ]
           then
             echo "Scheduled run. Disable cache."
-            echo "::set-output name=suffix::-no-cache"
+            echo "suffix=-no-cache" >> "$GITHUB_OUTPUT"
           else
             echo "Non-scheduled run. Enable cache."
-            echo "::set-output name=suffix::"
+            echo "suffix=" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Get branche name
@@ -106,7 +106,7 @@ jobs:
           TAG_LIST=$(IFS=,; printf '%s' "${TAGS[*]}")
           echo "Image tags:"
           printf -- '- %s\n' "${TAGS[@]}"
-          echo "::set-output name=tags::$TAG_LIST"
+          echo "tags=$TAG_LIST" >> "$GITHUB_OUTPUT"
 
       - name: Build and push
         id: docker_build
