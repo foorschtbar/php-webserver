@@ -22,7 +22,7 @@ This is an usefull extension of the official php:\*-apache Docker image.
 
 ... compared to the official image:
 
-- PHP extensions: `mysqli`, `mysql_pdo`, `imap`, `soap`, `imagick` and `op_cache`
+- PHP extensions: `mysqli`, `mysql_pdo`, `imap`, `soap`, `imagick`, `yaml` and `op_cache`
 - Apache Modules: `mod_rewrite`, `mod_headers`, `mod_remoteip`
 - Prepared for use behind a reverse proxy
 - `Composer`
@@ -32,21 +32,19 @@ This is an usefull extension of the official php:\*-apache Docker image.
 
 | Tag                  | PHP Version | Branch  | Python |
 | -------------------- | ----------- | ------- | ------ |
-| `latest`             | 8.3         | master  | no     |
-| `python`             | 8.3         | master  | yes    |
-| `develop`            | 8.3         | develop | no     |
-| `8.3`                | 8.3         | master  | no     |
-| `8.3-develop`        | 8.3         | develop | no     |
-| `8.3-python`         | 8.3         | master  | yes    |
-| `8.3-python-develop` | 8.3         | develop | yes    |
+| `latest`             | 8.4         | master  | no     |
+| `python`             | 8.4         | master  | yes    |
+| `develop`            | 8.4         | develop | no     |
+| `8.4`                | 8.4         | master  | no     |
+| `8.4-develop`        | 8.4         | develop | no     |
+| `8.4-python`         | 8.4         | master  | yes    |
+| `8.4-python-develop` | 8.4         | develop | yes    |
 
 ## Usage
 
 Example docker-compose configuration:
 
 ```yml
-version: "3"
-
 services:
   web:
     image: foorschtbar/php-webserver
