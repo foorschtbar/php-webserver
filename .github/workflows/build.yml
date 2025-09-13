@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -133,7 +133,7 @@ jobs:
     name: Push README to Docker Hub
     steps:
       - name: git checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: push README to Dockerhub
         uses: christian-korneck/update-container-description-action@v1
