@@ -21,8 +21,6 @@ RUN set -eux; \
     apt-get update && apt-get install -y \
     # mariadb
     mariadb-client \
-    # for imap
-    libkrb5-dev \
     # for soap
     libxml2-dev \
     # cleanup
@@ -42,9 +40,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     opcache \
     gd \
     yaml \
-    Imagick/imagick@master
-# to fix imagick amd64 bug https://github.com/mlocati/docker-php-extension-installer/issues/739
-
+    imagick
 # confige apache
 RUN set -eux; \
     a2enmod rewrite; \
