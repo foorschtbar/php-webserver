@@ -1,4 +1,4 @@
-ARG FROM_TAG=8.4-apache
+ARG FROM_TAG=8.5-apache
 
 FROM php:$FROM_TAG
 

@@ -32,13 +32,13 @@ This is an usefull extension of the official php:\*-apache Docker image.
 
 | Tag                  | PHP Version | Branch  | Python |
 | -------------------- | ----------- | ------- | ------ |
-| `latest`             | 8.4         | master  | no     |
-| `python`             | 8.4         | master  | yes    |
-| `develop`            | 8.4         | develop | no     |
-| `8.4`                | 8.4         | master  | no     |
-| `8.4-develop`        | 8.4         | develop | no     |
-| `8.4-python`         | 8.4         | master  | yes    |
-| `8.4-python-develop` | 8.4         | develop | yes    |
+| `latest`             | 8.5         | master  | no     |
+| `python`             | 8.5         | master  | yes    |
+| `develop`            | 8.5         | develop | no     |
+| `8.5`                | 8.5         | master  | no     |
+| `8.5-develop`        | 8.5         | develop | no     |
+| `8.5-python`         | 8.5         | master  | yes    |
+| `8.5-python-develop` | 8.5         | develop | yes    |
 
 ## Usage
 
