@@ -112,8 +112,9 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v7
         with:
+          # TEMP: pinned to 8.5.12 (php2shell fix) until php:8.5-apache is updated
           build-args: |
-            FROM_TAG=${{ matrix.php }}-apache
+            FROM_TAG=8.5.12-apache
             PYTHON=${{ matrix.python }}
           push: true
           tags: ${{ steps.docker_tags.outputs.tags }}
