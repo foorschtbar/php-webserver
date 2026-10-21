@@ -1,5 +1,4 @@
-# TEMP: pinned to 8.5.12 (php2shell fix) until php:8.5-apache is updated
-ARG FROM_TAG=8.5.12-apache
+ARG FROM_TAG=8.5-apache
 
 FROM php:$FROM_TAG
 
